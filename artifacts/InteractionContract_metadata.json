@@ -1,0 +1,168 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "consumerName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "allocatedResources",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "usedResources",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "unusedResources",
+						"type": "uint256"
+					}
+				],
+				"name": "InteractionData",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "interactionCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "interactions",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "consumerName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "allocatedResources",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "usedResources",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "unusedResources",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_requestId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_consumerName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_allocatedResources",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_usedResources",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_unusedResources",
+						"type": "uint256"
+					}
+				],
+				"name": "storeInteraction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"InteractionContract.sol": "InteractionContract"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"InteractionContract.sol": {
+			"keccak256": "0xe0d04e778d04486da2c95005e99c513e22223815d57e0ab1a451ad48e6f43a03",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e923cb1d195ac032329f7aa75eb3bc5942ba905005fa8ec34a5cc9a0191d5b2c",
+				"dweb:/ipfs/QmS82XDiw4UX3CaE9cJCrSrEF5aefppCbuRup7Cy2dU5L9"
+			]
+		}
+	},
+	"version": 1
+}

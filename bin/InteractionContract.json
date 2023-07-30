@@ -1,0 +1,944 @@
+{
+    "contractName": "InteractionContract",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "requestId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "consumerName",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "allocatedResources",
+                    "type": "uint256"
+                }
+            ],
+            "name": "InteractionData",
+            "type": "event"
+        },
+        {
+            "inputs": [],
+            "name": "interactionCount",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "interactions",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "requestId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "consumerName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "allocatedResources",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_requestId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_consumerName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_allocatedResources",
+                    "type": "uint256"
+                }
+            ],
+            "name": "storeInteraction",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"requestId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"consumerName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"allocatedResources\",\"type\":\"uint256\"}],\"name\":\"InteractionData\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"interactionCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"interactions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"requestId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"consumerName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"allocatedResources\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_requestId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_consumerName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_allocatedResources\",\"type\":\"uint256\"}],\"name\":\"storeInteraction\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"d:/B.Tech/Blockchain/IIIT Bangalore/Socket Programming/InteractionContract.sol\":\"InteractionContract\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"d:/B.Tech/Blockchain/IIIT Bangalore/Socket Programming/InteractionContract.sol\":{\"keccak256\":\"0xc0f5fe77debf9bbfa174722be09008144d544e4dc1ff982c0c982d59ce22d048\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6ea6759c645382bef2ee2e7d0da82e6083a585b6f95895ad5ceda22e039bc98e\",\"dweb:/ipfs/QmcfzUCwNrATrbY7d5uS9ZaMFyfrudSiE2nuZjaZjTLwrJ\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b506104f0806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80630ba460ff14610046578063649e4bcd14610071578063a890610b14610086575b600080fd5b6100596100543660046101c6565b61009d565b60405161006893929190610225565b60405180910390f35b61008461007f366004610264565b610148565b005b61008f60015481565b604051908152602001610068565b600060208190529081526040902080546001820180549192916100bf90610328565b80601f01602080910402602001604051908101604052809291908181526020018280546100eb90610328565b80156101385780601f1061010d57610100808354040283529160200191610138565b820191906000526020600020905b81548152906001019060200180831161011b57829003601f168201915b5050505050908060020154905083565b60008381526020819052604090208381556001810161016784826103b1565b50818160020181905550837f49ef608a6bca982c2e590cb0051c5c7ef30529df78f388a3067c9aa9a225be3084846040516101a3929190610471565b60405180910390a2600180549060006101bb83610493565b919050555050505050565b6000602082840312156101d857600080fd5b5035919050565b6000815180845260005b81811015610205576020818501810151868301820152016101e9565b506000602082860101526020601f19601f83011685010191505092915050565b83815260606020820152600061023e60608301856101df565b9050826040830152949350505050565b634e487b7160e01b600052604160045260246000fd5b60008060006060848603121561027957600080fd5b83359250602084013567ffffffffffffffff8082111561029857600080fd5b818601915086601f8301126102ac57600080fd5b8135818111156102be576102be61024e565b604051601f8201601f19908116603f011681019083821181831017156102e6576102e661024e565b816040528281528960208487010111156102ff57600080fd5b826020860160208301376000602084830101528096505050505050604084013590509250925092565b600181811c9082168061033c57607f821691505b60208210810361035c57634e487b7160e01b600052602260045260246000fd5b50919050565b601f8211156103ac57600081815260208120601f850160051c810160208610156103895750805b601f850160051c820191505b818110156103a857828155600101610395565b5050505b505050565b815167ffffffffffffffff8111156103cb576103cb61024e565b6103df816103d98454610328565b84610362565b602080601f83116001811461041457600084156103fc5750858301515b600019600386901b1c1916600185901b1785556103a8565b600085815260208120601f198616915b8281101561044357888601518255948401946001909101908401610424565b50858210156104615787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60408152600061048460408301856101df565b90508260208301529392505050565b6000600182016104b357634e487b7160e01b600052601160045260246000fd5b506001019056fea2646970667358221220df15c37648774579c816f2c62bf73b6a1e2847e15acdd08033e230d8105e32c364736f6c63430008130033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100415760003560e01c80630ba460ff14610046578063649e4bcd14610071578063a890610b14610086575b600080fd5b6100596100543660046101c6565b61009d565b60405161006893929190610225565b60405180910390f35b61008461007f366004610264565b610148565b005b61008f60015481565b604051908152602001610068565b600060208190529081526040902080546001820180549192916100bf90610328565b80601f01602080910402602001604051908101604052809291908181526020018280546100eb90610328565b80156101385780601f1061010d57610100808354040283529160200191610138565b820191906000526020600020905b81548152906001019060200180831161011b57829003601f168201915b5050505050908060020154905083565b60008381526020819052604090208381556001810161016784826103b1565b50818160020181905550837f49ef608a6bca982c2e590cb0051c5c7ef30529df78f388a3067c9aa9a225be3084846040516101a3929190610471565b60405180910390a2600180549060006101bb83610493565b919050555050505050565b6000602082840312156101d857600080fd5b5035919050565b6000815180845260005b81811015610205576020818501810151868301820152016101e9565b506000602082860101526020601f19601f83011685010191505092915050565b83815260606020820152600061023e60608301856101df565b9050826040830152949350505050565b634e487b7160e01b600052604160045260246000fd5b60008060006060848603121561027957600080fd5b83359250602084013567ffffffffffffffff8082111561029857600080fd5b818601915086601f8301126102ac57600080fd5b8135818111156102be576102be61024e565b604051601f8201601f19908116603f011681019083821181831017156102e6576102e661024e565b816040528281528960208487010111156102ff57600080fd5b826020860160208301376000602084830101528096505050505050604084013590509250925092565b600181811c9082168061033c57607f821691505b60208210810361035c57634e487b7160e01b600052602260045260246000fd5b50919050565b601f8211156103ac57600081815260208120601f850160051c810160208610156103895750805b601f850160051c820191505b818110156103a857828155600101610395565b5050505b505050565b815167ffffffffffffffff8111156103cb576103cb61024e565b6103df816103d98454610328565b84610362565b602080601f83116001811461041457600084156103fc5750858301515b600019600386901b1c1916600185901b1785556103a8565b600085815260208120601f198616915b8281101561044357888601518255948401946001909101908401610424565b50858210156104615787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60408152600061048460408301856101df565b90508260208301529392505050565b6000600182016104b357634e487b7160e01b600052601160045260246000fd5b506001019056fea2646970667358221220df15c37648774579c816f2c62bf73b6a1e2847e15acdd08033e230d8105e32c364736f6c63430008130033",
+    "sourceMap": "60:912:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "60:912:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;366:51;;;;;;:::i;:::-;;:::i;:::-;;;;;;;;;:::i;:::-;;;;;;;;464:505;;;;;;:::i;:::-;;:::i;:::-;;424:31;;;;;;;;;2335:25:1;;;2323:2;2308:18;424:31:0;2189:177:1;366:51:0;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;464:505::-;620:34;657:24;;;;;;;;;;692:37;;;740:27;;;:43;770:13;740:27;:43;:::i;:::-;;830:19;794:14;:33;;:55;;;;883:10;867:63;895:13;910:19;867:63;;;;;;;:::i;:::-;;;;;;;;943:16;:18;;;:16;:18;;;:::i;:::-;;;;;;609:360;464:505;;;:::o;14:180:1:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:1;;14:180;-1:-1:-1;14:180:1:o;199:423::-;241:3;279:5;273:12;306:6;301:3;294:19;331:1;341:162;355:6;352:1;349:13;341:162;;;417:4;473:13;;;469:22;;463:29;445:11;;;441:20;;434:59;370:12;341:162;;;345:3;548:1;541:4;532:6;527:3;523:16;519:27;512:38;611:4;604:2;600:7;595:2;587:6;583:15;579:29;574:3;570:39;566:50;559:57;;;199:423;;;;:::o;627:362::-;832:6;821:9;814:25;875:2;870;859:9;855:18;848:30;795:4;895:45;936:2;925:9;921:18;913:6;895:45;:::i;:::-;887:53;;976:6;971:2;960:9;956:18;949:34;627:362;;;;;;:::o;994:127::-;1055:10;1050:3;1046:20;1043:1;1036:31;1086:4;1083:1;1076:15;1110:4;1107:1;1100:15;1126:1058;1213:6;1221;1229;1282:2;1270:9;1261:7;1257:23;1253:32;1250:52;;;1298:1;1295;1288:12;1250:52;1334:9;1321:23;1311:33;;1395:2;1384:9;1380:18;1367:32;1418:18;1459:2;1451:6;1448:14;1445:34;;;1475:1;1472;1465:12;1445:34;1513:6;1502:9;1498:22;1488:32;;1558:7;1551:4;1547:2;1543:13;1539:27;1529:55;;1580:1;1577;1570:12;1529:55;1616:2;1603:16;1638:2;1634;1631:10;1628:36;;;1644:18;;:::i;:::-;1719:2;1713:9;1687:2;1773:13;;-1:-1:-1;;1769:22:1;;;1793:2;1765:31;1761:40;1749:53;;;1817:18;;;1837:22;;;1814:46;1811:72;;;1863:18;;:::i;:::-;1903:10;1899:2;1892:22;1938:2;1930:6;1923:18;1978:7;1973:2;1968;1964;1960:11;1956:20;1953:33;1950:53;;;1999:1;1996;1989:12;1950:53;2055:2;2050;2046;2042:11;2037:2;2029:6;2025:15;2012:46;2100:1;2095:2;2090;2082:6;2078:15;2074:24;2067:35;2121:6;2111:16;;;;;;;2174:2;2163:9;2159:18;2146:32;2136:42;;1126:1058;;;;;:::o;2371:380::-;2450:1;2446:12;;;;2493;;;2514:61;;2568:4;2560:6;2556:17;2546:27;;2514:61;2621:2;2613:6;2610:14;2590:18;2587:38;2584:161;;2667:10;2662:3;2658:20;2655:1;2648:31;2702:4;2699:1;2692:15;2730:4;2727:1;2720:15;2584:161;;2371:380;;;:::o;2882:545::-;2984:2;2979:3;2976:11;2973:448;;;3020:1;3045:5;3041:2;3034:17;3090:4;3086:2;3076:19;3160:2;3148:10;3144:19;3141:1;3137:27;3131:4;3127:38;3196:4;3184:10;3181:20;3178:47;;;-1:-1:-1;3219:4:1;3178:47;3274:2;3269:3;3265:12;3262:1;3258:20;3252:4;3248:31;3238:41;;3329:82;3347:2;3340:5;3337:13;3329:82;;;3392:17;;;3373:1;3362:13;3329:82;;;3333:3;;;2973:448;2882:545;;;:::o;3603:1352::-;3729:3;3723:10;3756:18;3748:6;3745:30;3742:56;;;3778:18;;:::i;:::-;3807:97;3897:6;3857:38;3889:4;3883:11;3857:38;:::i;:::-;3851:4;3807:97;:::i;:::-;3959:4;;4023:2;4012:14;;4040:1;4035:663;;;;4742:1;4759:6;4756:89;;;-1:-1:-1;4811:19:1;;;4805:26;4756:89;-1:-1:-1;;3560:1:1;3556:11;;;3552:24;3548:29;3538:40;3584:1;3580:11;;;3535:57;4858:81;;4005:944;;4035:663;2829:1;2822:14;;;2866:4;2853:18;;-1:-1:-1;;4071:20:1;;;4189:236;4203:7;4200:1;4197:14;4189:236;;;4292:19;;;4286:26;4271:42;;4384:27;;;;4352:1;4340:14;;;;4219:19;;4189:236;;;4193:3;4453:6;4444:7;4441:19;4438:201;;;4514:19;;;4508:26;-1:-1:-1;;4597:1:1;4593:14;;;4609:3;4589:24;4585:37;4581:42;4566:58;4551:74;;4438:201;-1:-1:-1;;;;;4685:1:1;4669:14;;;4665:22;4652:36;;-1:-1:-1;3603:1352:1:o;4960:291::-;5137:2;5126:9;5119:21;5100:4;5157:45;5198:2;5187:9;5183:18;5175:6;5157:45;:::i;:::-;5149:53;;5238:6;5233:2;5222:9;5218:18;5211:34;4960:291;;;;;:::o;5256:232::-;5295:3;5316:17;;;5313:140;;5375:10;5370:3;5366:20;5363:1;5356:31;5410:4;5407:1;5400:15;5438:4;5435:1;5428:15;5313:140;-1:-1:-1;5480:1:1;5469:13;;5256:232::o",
+    "sourcePath": "d:/B.Tech/Blockchain/IIIT Bangalore/Socket Programming/InteractionContract.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "d:/B.Tech/Blockchain/IIIT Bangalore/Socket Programming/InteractionContract.sol",
+        "exportedSymbols": {
+            "InteractionContract": [
+                68
+            ]
+        },
+        "id": 69,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "33:23:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "InteractionContract",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 68,
+                "linearizedBaseContracts": [
+                    68
+                ],
+                "name": "InteractionContract",
+                "nameLocation": "69:19:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "canonicalName": "InteractionContract.Interaction",
+                        "id": 8,
+                        "members": [
+                            {
+                                "constant": false,
+                                "id": 3,
+                                "mutability": "mutable",
+                                "name": "requestId",
+                                "nameLocation": "134:9:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 8,
+                                "src": "126:17:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                },
+                                "typeName": {
+                                    "id": 2,
+                                    "name": "uint256",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "126:7:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 5,
+                                "mutability": "mutable",
+                                "name": "consumerName",
+                                "nameLocation": "161:12:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 8,
+                                "src": "154:19:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_string_storage_ptr",
+                                    "typeString": "string"
+                                },
+                                "typeName": {
+                                    "id": 4,
+                                    "name": "string",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "154:6:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_storage_ptr",
+                                        "typeString": "string"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 7,
+                                "mutability": "mutable",
+                                "name": "allocatedResources",
+                                "nameLocation": "192:18:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 8,
+                                "src": "184:26:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                },
+                                "typeName": {
+                                    "id": 6,
+                                    "name": "uint256",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "184:7:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    }
+                                },
+                                "visibility": "internal"
+                            }
+                        ],
+                        "name": "Interaction",
+                        "nameLocation": "103:11:0",
+                        "nodeType": "StructDefinition",
+                        "scope": 68,
+                        "src": "96:122:0",
+                        "visibility": "public"
+                    },
+                    {
+                        "anonymous": false,
+                        "eventSelector": "49ef608a6bca982c2e590cb0051c5c7ef30529df78f388a3067c9aa9a225be30",
+                        "id": 16,
+                        "name": "InteractionData",
+                        "nameLocation": "232:15:0",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 15,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 10,
+                                    "indexed": true,
+                                    "mutability": "mutable",
+                                    "name": "requestId",
+                                    "nameLocation": "274:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 16,
+                                    "src": "258:25:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 9,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "258:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 12,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "consumerName",
+                                    "nameLocation": "301:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 16,
+                                    "src": "294:19:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 11,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "294:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 14,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "allocatedResources",
+                                    "nameLocation": "332:18:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 16,
+                                    "src": "324:26:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 13,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "324:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "247:110:0"
+                        },
+                        "src": "226:132:0"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "0ba460ff",
+                        "id": 21,
+                        "mutability": "mutable",
+                        "name": "interactions",
+                        "nameLocation": "405:12:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 68,
+                        "src": "366:51:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Interaction_$8_storage_$",
+                            "typeString": "mapping(uint256 => struct InteractionContract.Interaction)"
+                        },
+                        "typeName": {
+                            "id": 20,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 17,
+                                "name": "uint256",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "374:7:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "366:31:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Interaction_$8_storage_$",
+                                "typeString": "mapping(uint256 => struct InteractionContract.Interaction)"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 19,
+                                "nodeType": "UserDefinedTypeName",
+                                "pathNode": {
+                                    "id": 18,
+                                    "name": "Interaction",
+                                    "nameLocations": [
+                                        "385:11:0"
+                                    ],
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 8,
+                                    "src": "385:11:0"
+                                },
+                                "referencedDeclaration": 8,
+                                "src": "385:11:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Interaction_$8_storage_ptr",
+                                    "typeString": "struct InteractionContract.Interaction"
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "a890610b",
+                        "id": 23,
+                        "mutability": "mutable",
+                        "name": "interactionCount",
+                        "nameLocation": "439:16:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 68,
+                        "src": "424:31:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 22,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "424:7:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 66,
+                            "nodeType": "Block",
+                            "src": "609:360:0",
+                            "statements": [
+                                {
+                                    "assignments": [
+                                        34
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 34,
+                                            "mutability": "mutable",
+                                            "name": "newInteraction",
+                                            "nameLocation": "640:14:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 66,
+                                            "src": "620:34:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "storage",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Interaction_$8_storage_ptr",
+                                                "typeString": "struct InteractionContract.Interaction"
+                                            },
+                                            "typeName": {
+                                                "id": 33,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 32,
+                                                    "name": "Interaction",
+                                                    "nameLocations": [
+                                                        "620:11:0"
+                                                    ],
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 8,
+                                                    "src": "620:11:0"
+                                                },
+                                                "referencedDeclaration": 8,
+                                                "src": "620:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Interaction_$8_storage_ptr",
+                                                    "typeString": "struct InteractionContract.Interaction"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 38,
+                                    "initialValue": {
+                                        "baseExpression": {
+                                            "id": 35,
+                                            "name": "interactions",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 21,
+                                            "src": "657:12:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Interaction_$8_storage_$",
+                                                "typeString": "mapping(uint256 => struct InteractionContract.Interaction storage ref)"
+                                            }
+                                        },
+                                        "id": 37,
+                                        "indexExpression": {
+                                            "id": 36,
+                                            "name": "_requestId",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 25,
+                                            "src": "670:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "IndexAccess",
+                                        "src": "657:24:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Interaction_$8_storage",
+                                            "typeString": "struct InteractionContract.Interaction storage ref"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "620:61:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 43,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "expression": {
+                                                "id": 39,
+                                                "name": "newInteraction",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 34,
+                                                "src": "692:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Interaction_$8_storage_ptr",
+                                                    "typeString": "struct InteractionContract.Interaction storage pointer"
+                                                }
+                                            },
+                                            "id": 41,
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "memberLocation": "707:9:0",
+                                            "memberName": "requestId",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 3,
+                                            "src": "692:24:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 42,
+                                            "name": "_requestId",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 25,
+                                            "src": "719:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "692:37:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 44,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "692:37:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 49,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "expression": {
+                                                "id": 45,
+                                                "name": "newInteraction",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 34,
+                                                "src": "740:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Interaction_$8_storage_ptr",
+                                                    "typeString": "struct InteractionContract.Interaction storage pointer"
+                                                }
+                                            },
+                                            "id": 47,
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "memberLocation": "755:12:0",
+                                            "memberName": "consumerName",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 5,
+                                            "src": "740:27:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_storage",
+                                                "typeString": "string storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 48,
+                                            "name": "_consumerName",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 27,
+                                            "src": "770:13:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_memory_ptr",
+                                                "typeString": "string memory"
+                                            }
+                                        },
+                                        "src": "740:43:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage",
+                                            "typeString": "string storage ref"
+                                        }
+                                    },
+                                    "id": 50,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "740:43:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 55,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "expression": {
+                                                "id": 51,
+                                                "name": "newInteraction",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 34,
+                                                "src": "794:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Interaction_$8_storage_ptr",
+                                                    "typeString": "struct InteractionContract.Interaction storage pointer"
+                                                }
+                                            },
+                                            "id": 53,
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "memberLocation": "809:18:0",
+                                            "memberName": "allocatedResources",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 7,
+                                            "src": "794:33:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 54,
+                                            "name": "_allocatedResources",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 29,
+                                            "src": "830:19:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "794:55:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 56,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "794:55:0"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "id": 58,
+                                                "name": "_requestId",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 25,
+                                                "src": "883:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            {
+                                                "id": 59,
+                                                "name": "_consumerName",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 27,
+                                                "src": "895:13:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                }
+                                            },
+                                            {
+                                                "id": 60,
+                                                "name": "_allocatedResources",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 29,
+                                                "src": "910:19:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            ],
+                                            "id": 57,
+                                            "name": "InteractionData",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 16,
+                                            "src": "867:15:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                                                "typeString": "function (uint256,string memory,uint256)"
+                                            }
+                                        },
+                                        "id": 61,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "867:63:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 62,
+                                    "nodeType": "EmitStatement",
+                                    "src": "862:68:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 64,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "UnaryOperation",
+                                        "operator": "++",
+                                        "prefix": false,
+                                        "src": "943:18:0",
+                                        "subExpression": {
+                                            "id": 63,
+                                            "name": "interactionCount",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 23,
+                                            "src": "943:16:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 65,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "943:18:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "649e4bcd",
+                        "id": 67,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "storeInteraction",
+                        "nameLocation": "473:16:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 30,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 25,
+                                    "mutability": "mutable",
+                                    "name": "_requestId",
+                                    "nameLocation": "508:10:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 67,
+                                    "src": "500:18:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 24,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "500:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 27,
+                                    "mutability": "mutable",
+                                    "name": "_consumerName",
+                                    "nameLocation": "543:13:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 67,
+                                    "src": "529:27:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 26,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "529:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 29,
+                                    "mutability": "mutable",
+                                    "name": "_allocatedResources",
+                                    "nameLocation": "575:19:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 67,
+                                    "src": "567:27:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 28,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "567:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "489:112:0"
+                        },
+                        "returnParameters": {
+                            "id": 31,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "609:0:0"
+                        },
+                        "scope": 68,
+                        "src": "464:505:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 69,
+                "src": "60:912:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "33:941:0"
+    },
+    "functionHashes": {
+        "interactionCount()": "a890610b",
+        "interactions(uint256)": "0ba460ff",
+        "storeInteraction(uint256,string,uint256)": "649e4bcd"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "252800",
+            "executionCost": "294",
+            "totalCost": "253094"
+        },
+        "external": {
+            "interactionCount()": "2317",
+            "interactions(uint256)": "infinite",
+            "storeInteraction(uint256,string,uint256)": "infinite"
+        }
+    }
+}
